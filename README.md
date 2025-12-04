@@ -1,36 +1,66 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+🔗 TinyLink – URL Shortener with Analytics
 
-## Getting Started
+TinyLink is a full-stack URL shortening web application built using Next.js (App Router) and MongoDB. It allows users to shorten long URLs, track click counts in real time, view detailed statistics, and manage links easily through a clean dashboard.
 
-First, run the development server:
+🚀 Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+✅ Shorten long URLs instantly
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+✅ Custom short code generation
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+✅ Redirect with automatic click tracking
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+✅ View real-time analytics & stats
 
-## Learn More
+✅ Delete short links
 
-To learn more about Next.js, take a look at the following resources:
+✅ Health check API for uptime monitoring
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+✅ Fully responsive UI
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+✅ RESTful API architecture
 
-## Deploy on Vercel
+🛠️ Tech Stack
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Frontend: Next.js (App Router)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Backend: Next.js API Routes
+
+Database: MongoDB + Mongoose
+
+Styling: Tailwind CSS
+
+Deployment: Vercel / Render
+
+Tools: GitHub, Postman
+
+📂 Project Folder Structure
+app/
+ ├── page.js                  → Dashboard UI
+ ├── healthz/route.js         → Health Check API
+ ├── api/
+ │   └── links/
+ │       ├── route.js         → Create & Fetch Links
+ │       └── [code]/route.js → Get & Delete by Code
+ ├── [code]/route.js          → Redirect Handler
+ ├── code/[code]/page.js      → Analytics Page
+
+lib/
+ ├── mongo.js                 → Database Connection
+ └── models/
+     └── Link.js              → Mongoose Schema
+🔥 API Endpoints
+Method	Endpoint	Description
+GET	/healthz	Server health check
+POST	/api/links	Create short link
+GET	/api/links	Get all links
+GET	/api/links/:code	Get stats for one link
+DELETE	/api/links/:code	Delete a link
+GET	/:code	Redirect to original URL
+⚙️ Environment Variables
+
+Create a .env.local file in the root folder:
+
+MONGODB_URI=your_mongodb_connection_string
+NEXT_PUBLIC_BASE_URL=http://localhost:3000
+
